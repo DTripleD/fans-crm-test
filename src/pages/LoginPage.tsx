@@ -10,7 +10,7 @@ const LoginPage = () => {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (email.length < 5 || password.length < 5) {

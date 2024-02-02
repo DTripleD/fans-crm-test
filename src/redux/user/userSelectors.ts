@@ -1,3 +1,7 @@
-export const selectIsLoggedIn = (state: any) => state.user.isLogedIn;
+import { store } from "../store";
 
-export const userSelector = (state: any) => state.user.user;
+type RootState = ReturnType<typeof store.getState>;
+
+export const selectIsLoggedIn = (state: RootState) => state.user.isLogedIn;
+
+export const userSelector = (state: RootState) => state.user.user;

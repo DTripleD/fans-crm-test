@@ -11,10 +11,8 @@ const RegisterPage = () => {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    console.log(name.length);
 
     if (email.length < 5 || password.length < 5 || name.length < 5) {
       return alert("Each field must contain at least 5 characters");
