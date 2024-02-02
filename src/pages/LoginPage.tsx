@@ -1,49 +1,46 @@
-import { Form } from "./LoginPage.styled";
+import { useState } from "react";
+import { Button, Form, Input, Label, Title } from "./LoginPage.styled";
+import { useDispatch } from "react-redux";
+import { logIn } from "../redux/user/userSlice";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    if (email.length < 5 || password.length < 5) {
+      return alert("Each field must contain at least 5 characters");
+    }
+
+    dispatch(logIn({ email, password }));
+  };
+
   return (
-    <Form>
-      <h3>Sign In</h3>
-
-      <div className="mb-3">
-        <label>Email address</label>
-        <input
+    <Form onSubmit={handleSubmit}>
+      <Title>Login</Title>
+      <Label>
+        Email address
+        <Input
           type="email"
-          className="form-control"
           placeholder="Enter email"
+          onChange={(e) => setEmail(e.target.value)}
         />
-      </div>
-
-      <div className="mb-3">
-        <label>Password</label>
-        <input
+      </Label>
+      <Label>
+        Password
+        <Input
           type="password"
-          className="form-control"
           placeholder="Enter password"
+          onChange={(e) => setPassword(e.target.value)}
         />
-      </div>
-
-      <div className="mb-3">
-        <div className="custom-control custom-checkbox">
-          <input
-            type="checkbox"
-            className="custom-control-input"
-            id="customCheck1"
-          />
-          <label className="custom-control-label" htmlFor="customCheck1">
-            Remember me
-          </label>
-        </div>
-      </div>
-
-      <div className="d-grid">
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </div>
-      <p className="forgot-password text-right">
-        Forgot <a href="#">password?</a>
-      </p>
+      </Label>
+      <Button type="submit">Login</Button>
+      <p>First time?</p> <Link to="/">Register</Link>
     </Form>
   );
 };

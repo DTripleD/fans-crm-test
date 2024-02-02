@@ -13,20 +13,23 @@ function App() {
   return (
     <AppWrapper>
       <Routes>
-        <Route
-          index
-          element={
-            <RestrictedRoute component={<RegisterPage />} redirectTo="/user" />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute component={<LoginPage />} redirectTo="/user" />
-          }
-        />
-
         <Route path="/" element={<SharedLayout />}>
+          <Route
+            index
+            element={
+              <RestrictedRoute
+                component={<RegisterPage />}
+                redirectTo="/user"
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute component={<LoginPage />} redirectTo="/user" />
+            }
+          />
+
           <Route
             path="/user"
             element={<PrivateRoute component={<UserPage />} />}
