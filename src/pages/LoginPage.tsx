@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form, Input, Label, Title } from "./LoginPage.styled";
+import { Button, Form, Input, Label, Title } from "./Auth.styled";
 import { useDispatch } from "react-redux";
 import { logIn } from "../redux/user/userSlice";
 import { Link } from "react-router-dom";
