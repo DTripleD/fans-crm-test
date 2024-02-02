@@ -40,7 +40,9 @@ const LoginPage = () => {
         />
       </Label>
       <Button type="submit">Login</Button>
-      <p>First time?</p> <Link to="/">Register</Link>
+      <p>
+        First time? <Link to="/">Register</Link>
+      </p>
     </Form>
   );
 };
